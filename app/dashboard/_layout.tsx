@@ -16,14 +16,24 @@ export default function DashboardLayout() {
     href: null, // Mencegah mood muncul sebagai tab
         }}
         />
-
-      {/** Hanya daftar tab yang diinginkan */}
-      <Tabs.Screen
-        name="home"
-        options={{
-          title: "Home",
-          tabBarIcon: ({ color, size }) => <Ionicons name="home-outline" size={size} color={color} />,
+    <Tabs.Screen
+    name="InstantCounselingScreen"
+    options={{
+    href: null, // Mencegah InstantCounselingScreen muncul sebagai tab
         }}
+        />
+    <Tabs.Screen
+    name="doctor"
+    options={{
+    href: null, // Mencegah doctor muncul sebagai tab
+        }}
+        />
+      {/** Hanya daftar tab yang diinginkan */}
+    <Tabs.Screen
+      name="home"        options={{
+        title: "Home",
+        tabBarIcon: ({ color, size }) => <Ionicons name="home-outline" size={size} color={color} />,
+       }}
       />
       <Tabs.Screen
         name="counseling"
