@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   FlatList,
+  ScrollView,
 } from "react-native";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
 import { useState } from "react";
@@ -55,6 +56,7 @@ const DoctorDetailScreen = () => {
   const router = useRouter(); // Inisialisasi router
 
   return (
+  <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: 30 }}>
     <View style={styles.container}>
       <View style={styles.headerBackground}>
         <View style={styles.header}>
@@ -89,7 +91,12 @@ const DoctorDetailScreen = () => {
           ))}
           <Text style={styles.sessions}> {doctorData.rating} {doctorData.sessions}</Text>
         </View>
-
+          {/* Tambahan: Deskripsi Dokter */}
+          <Text style={styles.description}>
+              Saya memiliki pengalaman lebih dari 7 tahun dalam mendampingi klien mengelola stres, kecemasan, 
+              dan membangun kesejahteraan mental. Pendekatan saya berbasis terapi kognitif dan mindfulness, 
+              membantu klien memahami serta menerima emosinya dengan lebih baik.
+          </Text>
         <View style={styles.row}>
           <Text style={styles.sectionTittle}>Tanggal</Text>
           <TouchableOpacity
@@ -123,6 +130,8 @@ const DoctorDetailScreen = () => {
           horizontal
           data={generateDates(selectedMonth)}
           keyExtractor={(item) => item.date.toString()}
+          keyboardShouldPersistTaps="handled"
+          nestedScrollEnabled={true} // Tambahkan ini
           renderItem={({ item }) => (
             <TouchableOpacity
               style={[
@@ -150,20 +159,20 @@ const DoctorDetailScreen = () => {
             </TouchableOpacity>
           )}
         />
-
         <Text style={styles.sectionTitle}>Jam</Text>
         <FlatList
-  numColumns={4} // Mengatur agar ada 4 kolom ke samping
-  data={doctorData.availableTimes}
-  keyExtractor={(item) => item}
-  renderItem={({ item }) => (
-    <TouchableOpacity
-      style={[
-        styles.timeBox,
-        selectedTime === item && styles.selectedTimeBox,
-      ]}
-      onPress={() => setSelectedTime(item)}
-    >
+        numColumns={4} // Mengatur agar ada 4 kolom ke samping
+       data={doctorData.availableTimes}
+        keyExtractor={(item) => item}
+        nestedScrollEnabled={true} // Tambahkan ini
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            style={[
+             styles.timeBox,
+              selectedTime === item && styles.selectedTimeBox,
+            ]}
+          onPress={() => setSelectedTime(item)}
+        >
       <Text
         style={[
           styles.timeText,
@@ -172,11 +181,19 @@ const DoctorDetailScreen = () => {
       >
         {item}
       </Text>
-    </TouchableOpacity>
-  )}
-/>
+        </TouchableOpacity>
+        )}
+      />
+
+        <TouchableOpacity 
+          style={styles.bookingButton} 
+          onPress={() => router.push("/dashboard/payment")} // Arahkan ke payment.tsx
+        >
+        <Text style={styles.bookingText}>Booking Sekarang</Text>
+        </TouchableOpacity>
       </View>
     </View>
+  </ScrollView>
   );
 };
 
@@ -349,6 +366,31 @@ const styles = StyleSheet.create({
     color: "#149FFF",
     fontWeight: "400",
   },
+  description: {
+    fontSize: 14,
+    color: "gray",
+    marginTop: 10,
+    marginBottom: 10,
+    fontFamily: "poppins",
+    lineHeight: 20,
+  },
+  
+  bookingButton: {
+    marginTop: 20,
+    backgroundColor: "#149FFF",
+    paddingVertical: 14,
+    borderRadius: 8,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  
+  bookingText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "bold",
+    fontFamily: "poppins",
+  },
+  
 });
 
 export default DoctorDetailScreen;

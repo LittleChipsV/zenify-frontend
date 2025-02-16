@@ -17,13 +17,19 @@ export default function DashboardLayout() {
         }}
         />
     <Tabs.Screen
+    name="payment-success"
+    options={{
+    href: null, // Mencegah mood muncul sebagai tab
+        }}
+        />
+    <Tabs.Screen
     name="InstantCounselingScreen"
     options={{
     href: null, // Mencegah InstantCounselingScreen muncul sebagai tab
         }}
         />
     <Tabs.Screen
-    name="doctor"
+    name="payment"
     options={{
     href: null, // Mencegah doctor muncul sebagai tab
         }}

@@ -26,8 +26,8 @@ const KonselingScreen = () => {
       <TouchableOpacity
           style={[styles.optionBox, styles.activeOption]}
           onPress={() => router.push("./InstantCounselingScreen")}>
-          <Text style={styles.optionTitle}>⚡ Instan</Text>
-          <Text style={styles.optionDesc}>Butuh bantuan segera? Temukan solusi instan untuk emosimu.</Text>
+          <Text style={styles.optionTitleI}>⚡ Instan</Text>
+          <Text style={styles.optionDescI}>Butuh bantuan segera? Temukan solusi instan untuk emosimu.</Text>
       </TouchableOpacity>
         <TouchableOpacity style={styles.optionBox}>
           <Text style={styles.optionTitle}>🔵 Premium</Text>
@@ -105,6 +105,16 @@ const styles = StyleSheet.create({
     color: "#666",
     marginTop: 5,
   },
+  optionTitleI: {
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#fff",
+  },
+  optionDescI: {
+    fontSize: 14,
+    color: "#fff",
+    marginTop: 5,
+  },
   stepsContainer: {
     marginTop: 10,
   },
@@ -135,7 +145,7 @@ const styles = StyleSheet.create({
   },
   stepBox: {
     flex: 1,
-    backgroundColor: "#F9FCFF",
+    backgroundColor: "#fff",
     borderWidth: 1,
     borderColor: "#BFE6FF",
     borderRadius: 10,
@@ -146,10 +156,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
     color: "#333",
+    paddingLeft: 10,
   },
   stepDesc: {
     fontSize: 14,
     color: "#666",
     marginTop: 5,
+    paddingLeft: 10,
   },
 });
