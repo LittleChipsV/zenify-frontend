@@ -88,13 +88,14 @@ const MoodStep2 = () => {
 
 const styles = StyleSheet.create({
     container: { flex: 1, backgroundColor: "white", padding: 20 },
-    header: { flexDirection: "row", alignItems: "center", marginBottom: 20 }, // Lebih jauh ke bawah
+    header: { flexDirection: "row", alignItems: "center", marginBottom: 20, paddingTop: 70, // Tambahkan padding atas agar tidak terpotong
+    }, // Lebih jauh ke bawah
     progressBarContainer: { flexDirection: "row", flex: 1, marginLeft: 10 },
     progressBar: { flex: 1, height: 10, borderRadius: 5, marginHorizontal: 2 },
     activeProgress: { backgroundColor: "#5DB9F8" },
     inactiveProgress: { backgroundColor: "#AEDCFB" },
   
-    title: { fontSize: 18, fontWeight: "bold", textAlign: "center", marginBottom: 20 }, // Lebih jauh dari progress bar
+    title: { fontSize: 18, fontWeight: "bold", textAlign: "center", marginBottom: 50, marginTop: 20  }, // Lebih jauh dari progress bar
     sectionTitle: { fontSize: 16, fontWeight: "bold", marginTop: 15, marginBottom: 10 }, // Lebih jauh antar teks
   
     grid: { flexDirection: "row", flexWrap: "wrap", justifyContent: "space-between" },
@@ -109,7 +110,7 @@ const styles = StyleSheet.create({
     selectedEmotion: { borderColor: "#5DB9F8", backgroundColor: "#E0F2FE" },
     emotionText: { fontSize: 14 },
   
-    nextButton: { backgroundColor: "#5DB9F8", padding: 15, borderRadius: 10, marginTop: 30 }, // Jarak lebih luas
+    nextButton: { backgroundColor: "#5DB9F8", padding: 15, borderRadius: 10, marginTop: 30, bottom: 30 }, // Jarak lebih luas
     nextText: { color: "white", textAlign: "center", fontSize: 16, fontWeight: "600" },
   });
   

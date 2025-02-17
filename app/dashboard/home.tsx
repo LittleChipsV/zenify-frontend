@@ -64,7 +64,7 @@ const HomeScreen = () => {
 
         <TouchableOpacity
           style={styles.moodButtonMain}
-          onPress={() => router.push("/dashboard/mood/MoodStep1")}
+          onPress={() => router.push("../mood/MoodStep1")}
         >
           <Text style={styles.moodButtonText}>All Mood Analysis</Text>
         </TouchableOpacity>
@@ -185,6 +185,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     padding: 20,
+    paddingTop: 70, // Tambahkan padding atas agar tidak terpotong
   },
   profileContainer: {
     flexDirection: "row",
@@ -204,6 +205,7 @@ const styles = StyleSheet.create({
   greetingText: {
     fontSize: 14,
     color: "#555",
+
   },
   moodSection: {
     paddingHorizontal: 20,
@@ -211,24 +213,32 @@ const styles = StyleSheet.create({
     backgroundColor: "#E5F2FF",
     borderRadius: 10,
     alignItems: "center",
+    paddingTop: 20, // Tambahkan padding atas agar tidak terpotong
+    
   },
   greetingTextLarge: {
-    fontSize: 24, // Lebih besar
-    fontWeight: "700", // Tebal (bold)
+    fontSize: 26, // Lebih besar
+    fontWeight: "500", // Tebal (bold)
     alignSelf: "flex-start", // Ke kiri
+    fontFamily: "poppins", //
+    marginBottom: 5, // Tambahkan margin bawah agar tidak terpotong
+    bottom: 9, // Tambahkan margin bawah
   },
   
   moodText: {
-    fontSize: 18,
-    fontWeight: "500",
+    fontSize: 20,
+    fontWeight: "400",
     alignSelf: "flex-start",
+    fontFamily: "poppins", 
+    bottom: 9, // Tambahkan margin bawah
   },
   moodContainer: {
     flexDirection: "row",
     justifyContent: "space-between", // Meratakan ikon
     alignItems: "center",
-    width: "100%", // Memanfaatkan lebar penuh
+    width: "105%", // Memanfaatkan lebar penuh
     marginVertical: 15,
+    right: 3, // Geser ke kanan
   },
   whiteLayer: {
     backgroundColor: "#fff",
@@ -243,8 +253,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   moodImage: {
-    width: 50,
-    height: 50,
+    width: 55,
+    height: 55,
+    top: 5,
   },
   moodButtonMain: {
     backgroundColor: "#3D7FFB",
@@ -253,14 +264,16 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: "100%", // Lebarkan button hingga memenuhi container
     alignItems: "center",
-    marginTop: 10,
-      marginBottom: 30, // Tambahkan margin bawah
+    marginTop: 5,
+    marginBottom: 20, // Tambahkan margin bawah
+    top: 20,
 
   },
   moodButtonText: {
     color: "#fff",
     fontSize: 16,
     fontWeight: "600",
+    top: 0,
   },
   section: {
     paddingHorizontal: 20,

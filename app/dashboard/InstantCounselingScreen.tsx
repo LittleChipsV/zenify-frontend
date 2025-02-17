@@ -81,7 +81,7 @@ const CounselingScreen = () => {
           <Ionicons name="arrow-back" size={24} color="black" />
         </TouchableOpacity>
         <Text style={styles.title}>Konseling</Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => router.push("/counseling/chat")}>
         <Ionicons name="chatbubble-ellipses" size={24} color="black" />
         </TouchableOpacity>
       </View>
@@ -126,6 +126,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     paddingVertical: 16,
+    paddingTop: 70, // Tambahkan padding atas agar tidak terpotong
   },
   title: {
     fontSize: 18,

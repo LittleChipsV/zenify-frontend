@@ -6,7 +6,8 @@ import {
   TouchableOpacity,
   StyleSheet,
   FlatList,
-  ScrollView,
+  KeyboardAvoidingView,
+  Platform,
 } from "react-native";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
 import { useState } from "react";
@@ -56,90 +57,94 @@ const DoctorDetailScreen = () => {
   const router = useRouter(); // Inisialisasi router
 
   return (
-  <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: 30 }}>
-    <View style={styles.container}>
-      <View style={styles.headerBackground}>
-        <View style={styles.header}>
-        <TouchableOpacity 
-            style={styles.iconButton} 
-            onPress={() => router.push("/dashboard/InstantCounselingScreen")}
-          >
-            <Ionicons name="arrow-back-outline" size={24} color="black" />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.iconButton}>
-          <Ionicons name="chatbubble-ellipses" size={24} color="black" />
-          </TouchableOpacity>
-        </View>
-        <Image source={require("../../assets/images/Dokter.png")} style={styles.image} />
-      </View>
-
-      <View style={styles.detailContainer}>
-        <View style={styles.nameContainer}>
-          <Text style={styles.name}>{doctorData.name}</Text>
-          <View style={styles.statusContainer}>
-            <Text style={styles.statusText}>Available</Text>
-          </View>
-        </View>
-
-        <Text style={styles.specialty}>{doctorData.specialty}</Text>
-
-        <View style={styles.ratingContainer}>
-          {[1, 2, 3, 4, 5].map((star) => (
-            <TouchableOpacity key={star} onPress={() => setRating(star)}>
-              <FontAwesome name={star <= rating ? "star" : "star-o"} size={20} color="#FFA500" />
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS === "ios" ? "padding" : undefined}
+    >
+      <View style={styles.container}>
+        <View style={styles.headerBackground}>
+          <View style={styles.header}>
+            <TouchableOpacity
+              style={styles.iconButton}
+              onPress={() => router.push("/dashboard/InstantCounselingScreen")}
+            >
+              <Ionicons name="arrow-back-outline" size={24} color="black" />
             </TouchableOpacity>
-          ))}
-          <Text style={styles.sessions}> {doctorData.rating} {doctorData.sessions}</Text>
-        </View>
-          {/* Tambahan: Deskripsi Dokter */}
-          <Text style={styles.description}>
-              Saya memiliki pengalaman lebih dari 7 tahun dalam mendampingi klien mengelola stres, kecemasan, 
-              dan membangun kesejahteraan mental. Pendekatan saya berbasis terapi kognitif dan mindfulness, 
-              membantu klien memahami serta menerima emosinya dengan lebih baik.
-          </Text>
-        <View style={styles.row}>
-          <Text style={styles.sectionTittle}>Tanggal</Text>
-          <TouchableOpacity
-            style={styles.dropdownButton}
-            onPress={() => setIsDropdownVisible(!isDropdownVisible)}
-          >
-            <Text style={styles.dropdownText}>{selectedMonth}</Text>
-            <Ionicons name="chevron-down" size={16} color="black" />
-          </TouchableOpacity>
+            <TouchableOpacity style={styles.iconButton}>
+              <Ionicons name="chatbubble-ellipses" size={24} color="black" />
+            </TouchableOpacity>
+          </View>
+          <Image source={require("../../assets/images/Dokter.png")} style={styles.image} />
         </View>
 
-        {isDropdownVisible && (
-          <View style={styles.dropdownList}>
-            {availableMonths.map((month) => (
-              <TouchableOpacity
-                key={month}
-                style={styles.dropdownItem}
-                onPress={() => {
-                  setSelectedMonth(month);
-                  setSelectedDate(generateDates(month)[0].date);
-                  setIsDropdownVisible(false);
-                }}
-              >
-                <Text style={styles.dropdownItemText}>{month}</Text>
+        <View style={styles.detailContainer}>
+          <View style={styles.nameContainer}>
+            <Text style={styles.name}>{doctorData.name}</Text>
+            <View style={styles.statusContainer}>
+              <Text style={styles.statusText}>Available</Text>
+            </View>
+          </View>
+
+          <Text style={styles.specialty}>{doctorData.specialty}</Text>
+
+          <View style={styles.ratingContainer}>
+            {[1, 2, 3, 4, 5].map((star) => (
+              <TouchableOpacity key={star} onPress={() => setRating(star)}>
+                <FontAwesome name={star <= rating ? "star" : "star-o"} size={20} color="#FFA500" />
               </TouchableOpacity>
             ))}
+            <Text style={styles.sessions}> {doctorData.rating} {doctorData.sessions}</Text>
           </View>
-        )}
 
-        <FlatList
-          horizontal
-          data={generateDates(selectedMonth)}
-          keyExtractor={(item) => item.date.toString()}
-          keyboardShouldPersistTaps="handled"
-          nestedScrollEnabled={true} // Tambahkan ini
-          renderItem={({ item }) => (
+          {/* Tambahan: Deskripsi Dokter */}
+          <Text style={styles.description}>
+            Saya memiliki pengalaman lebih dari 7 tahun dalam mendampingi klien mengelola stres, kecemasan,
+            dan membangun kesejahteraan mental. Pendekatan saya berbasis terapi kognitif dan mindfulness,
+            membantu klien memahami serta menerima emosinya dengan lebih baik.
+          </Text>
+
+          <View style={styles.row}>
+            <Text style={styles.sectionTittle}>Tanggal</Text>
             <TouchableOpacity
-              style={[
-                styles.dateBox,
-                selectedDate === item.date && styles.selectedDateBox,
-              ]}
-              onPress={() => setSelectedDate(item.date)}
+              style={styles.dropdownButton}
+              onPress={() => setIsDropdownVisible(!isDropdownVisible)}
             >
+              <Text style={styles.dropdownText}>{selectedMonth}</Text>
+              <Ionicons name="chevron-down" size={16} color="black" />
+            </TouchableOpacity>
+          </View>
+
+          {isDropdownVisible && (
+            <View style={styles.dropdownList}>
+              {availableMonths.map((month) => (
+                <TouchableOpacity
+                  key={month}
+                  style={styles.dropdownItem}
+                  onPress={() => {
+                    setSelectedMonth(month);
+                    setSelectedDate(generateDates(month)[0].date);
+                    setIsDropdownVisible(false);
+                  }}
+                >
+                  <Text style={styles.dropdownItemText}>{month}</Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+          )}
+
+          <FlatList
+            horizontal
+            data={generateDates(selectedMonth)}
+            keyExtractor={(item) => item.date.toString()}
+            keyboardShouldPersistTaps="handled"
+            renderItem={({ item }) => (
+              <TouchableOpacity
+                style={[
+                  styles.dateBox,
+                  selectedDate === item.date && styles.selectedDateBox,
+                ]}
+                onPress={() => setSelectedDate(item.date)}
+              >
               <Text
                 style={[
                   styles.dateText,
@@ -156,46 +161,47 @@ const DoctorDetailScreen = () => {
               >
                 {item.date}
               </Text>
-            </TouchableOpacity>
-          )}
-        />
-        <Text style={styles.sectionTitle}>Jam</Text>
-        <FlatList
-        numColumns={4} // Mengatur agar ada 4 kolom ke samping
-       data={doctorData.availableTimes}
-        keyExtractor={(item) => item}
-        nestedScrollEnabled={true} // Tambahkan ini
-        renderItem={({ item }) => (
-          <TouchableOpacity
-            style={[
-             styles.timeBox,
-              selectedTime === item && styles.selectedTimeBox,
-            ]}
-          onPress={() => setSelectedTime(item)}
-        >
-      <Text
-        style={[
-          styles.timeText,
-          selectedTime === item && styles.selectedTimeText,
-        ]}
-      >
-        {item}
-      </Text>
-        </TouchableOpacity>
-        )}
-      />
+              </TouchableOpacity>
+            )}
+          />
 
-        <TouchableOpacity 
-          style={styles.bookingButton} 
-          onPress={() => router.push("/dashboard/payment")} // Arahkan ke payment.tsx
-        >
-        <Text style={styles.bookingText}>Booking Sekarang</Text>
-        </TouchableOpacity>
+          <Text style={styles.sectionTitle}>Jam</Text>
+          <FlatList
+            numColumns={4}
+            data={doctorData.availableTimes}
+            keyExtractor={(item) => item}
+            renderItem={({ item }) => (
+              <TouchableOpacity
+                style={[
+                  styles.timeBox,
+                  selectedTime === item && styles.selectedTimeBox,
+                ]}
+                onPress={() => setSelectedTime(item)}
+              >
+                <Text
+                  style={[
+                    styles.timeText,
+                    selectedTime === item && styles.selectedTimeText,
+                  ]}
+                >
+                  {item}
+                </Text>
+              </TouchableOpacity>
+            )}
+          />
+
+          <TouchableOpacity
+            style={styles.bookingButton}
+            onPress={() => router.push("/payment/payment")}
+          >
+            <Text style={styles.bookingText}>Booking Sekarang</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
-  </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {
@@ -204,7 +210,7 @@ const styles = StyleSheet.create({
   },
   headerBackground: {
     backgroundColor: "#EEF8FF",
-    height: 280,
+    height: 320,
     alignItems: "center",
     justifyContent: "center",
     position: "relative",

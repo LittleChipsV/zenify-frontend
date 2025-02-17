@@ -3,24 +3,26 @@
     import { useRouter } from "expo-router";
     import { Ionicons } from "@expo/vector-icons";
 
+
     const MoodStep1 = () => {
     const router = useRouter();
     const [selectedMood, setSelectedMood] = useState<number | null>(null);
 
     const moods = [
-        { id: 1, image: require("../../../assets/images/senang.png"), label: "Sangat Buruk" },
-        { id: 2, image: require("../../../assets/images/sangatsenang.png"), label: "Sangat Buruk" },
-        { id: 3, image: require("../../../assets/images/flat.png"), label: "Sangat Buruk" },
-        { id: 4, image: require("../../../assets/images/buruk.png"), label: "Sangat Buruk" },
-        { id: 5, image: require("../../../assets/images/sangatburuk.png"), label: "Sangat Buruk" },
-        { id: 6, image: require("../../../assets/images/biasaaja.png"), label: "Sangat Buruk" },
-        { id: 7, image: require("../../../assets/images/marah.png"), label: "Sangat Buruk" },
-        { id: 8, image: require("../../../assets/images/menghela.png"), label: "Sangat Buruk" },
-        { id: 9, image: require("../../../assets/images/menghela.png"), label: "Sangat Buruk" },
+        { id: 1, image: require("../../assets/images/senang.png"), label: "Sangat Buruk" },
+        { id: 2, image: require("../../assets/images/sangatsenang.png"), label: "Sangat Buruk" },
+        { id: 3, image: require("../../assets/images/flat.png"), label: "Sangat Buruk" },
+        { id: 4, image: require("../../assets/images/buruk.png"), label: "Sangat Buruk" },
+        { id: 5, image: require("../../assets/images/sangatburuk.png"), label: "Sangat Buruk" },
+        { id: 6, image: require("../../assets/images/biasaaja.png"), label: "Sangat Buruk" },
+        { id: 7, image: require("../../assets/images/marah.png"), label: "Sangat Buruk" },
+        { id: 8, image: require("../../assets/images/menghela.png"), label: "Sangat Buruk" },
+        { id: 9, image: require("../../assets/images/menghela.png"), label: "Sangat Buruk" },
     ];
 
     return (
         <View style={styles.container}>
+          
         {/* Header dengan Progress Bar */}
         <View style={styles.header}>
             <TouchableOpacity onPress={() => router.push("/dashboard/home")}> 
@@ -61,13 +63,14 @@
 
     const styles = StyleSheet.create({
         container: { flex: 1, backgroundColor: "white", padding: 20 },
-        header: { flexDirection: "row", alignItems: "center", marginBottom: 10 },
+        header: { flexDirection: "row", alignItems: "center", marginBottom: 10, paddingTop: 70, // Tambahkan padding atas agar tidak terpotong
+        },
         progressBarContainer: { flexDirection: "row", flex: 1, marginLeft: 10 },
         progressBar: { flex: 1, height: 10, borderRadius: 5, marginHorizontal: 2 },
         activeProgress: { backgroundColor: "#5DB9F8" },
         inactiveProgress: { backgroundColor: "#AEDCFB" },
-        title: { fontSize: 18, fontWeight: "bold", textAlign: "center", marginBottom: 10 },
-        subtitle: { textAlign: "center", color: "gray", marginBottom: 20 },
+        title: { fontSize: 18, fontWeight: "bold", textAlign: "center", marginBottom: 20, marginTop: 25 },
+        subtitle: { textAlign: "center", color: "gray", marginBottom: 40 },
         
         grid: { 
           flexDirection: "row", 

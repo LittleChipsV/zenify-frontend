@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
   header: {
     alignItems: "center",
     paddingVertical: 10,
+    paddingTop: 60, // Tambahkan padding atas agar tidak terpotong
   },
   headerTitle: {
     fontSize: 22,

@@ -147,6 +147,7 @@ const paymentMethods = [
         flexDirection: "row",
         alignItems: "center",
         padding: 16,
+        paddingTop: 86, // Tambahkan padding atas agar tidak terpotong
     },
     headerTitle: {
         flex: 1,
@@ -199,7 +200,7 @@ const paymentMethods = [
     separatorA: {
         height: 1,
         backgroundColor: "#E5E5E5",
-        marginTop: 10,
+        marginTop: 20,
         marginBottom: 0,
     },
     separatorB: {

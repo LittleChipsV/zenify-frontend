@@ -55,7 +55,7 @@ const MoodStep3 = () => {
         ))}
       </ScrollView>
 
-      <TouchableOpacity style={styles.nextButton} onPress={() => router.push("../home")}>
+      <TouchableOpacity style={styles.nextButton} onPress={() => router.push("/dashboard/home")}>
         <Text style={styles.nextText}>Next</Text>
       </TouchableOpacity>
     </View>
@@ -64,12 +64,13 @@ const MoodStep3 = () => {
 
 const styles = StyleSheet.create({
     container: { flex: 1, backgroundColor: "white", padding: 20 },
-    header: { flexDirection: "row", alignItems: "center", marginBottom: 20 }, // Jarak lebih jauh
-    progressBarContainer: { flexDirection: "row", flex: 1, marginLeft: 10 },
-    progressBar: { flex: 1, height: 10, borderRadius: 5, marginHorizontal: 2 },
-    activeProgress: { backgroundColor: "#5DB9F8" },
+    header: { flexDirection: "row", alignItems: "center", marginBottom: 20, paddingTop: 70, // Tambahkan padding atas agar tidak terpotong
+    }, // Jarak lebih jauh
+    progressBarContainer: { flexDirection: "row", flex: 1, marginLeft: 10,},
+    progressBar: { flex: 1, height: 10, borderRadius: 5, marginHorizontal: 2, },
+    activeProgress: { backgroundColor: "#5DB9F8",  },
 
-    title: { fontSize: 18, fontWeight: "bold", textAlign: "center", marginBottom: 20 }, // Jarak lebih jauh dari progress bar
+    title: { fontSize: 18, fontWeight: "bold", textAlign: "center", marginBottom: 50, marginTop: 20 }, // Jarak lebih jauh dari progress bar
     grid: { flexDirection: "row", flexWrap: "wrap", justifyContent: "space-between" },
     
     sourceItem: { 
@@ -83,7 +84,7 @@ const styles = StyleSheet.create({
     selectedSource: { borderColor: "#5DB9F8", backgroundColor: "#E0F2FE" },
     sourceText: { fontSize: 14 },
   
-    nextButton: { backgroundColor: "#5DB9F8", padding: 15, borderRadius: 10, marginTop: 30 }, // Lebih luas
+    nextButton: { backgroundColor: "#5DB9F8", padding: 15, borderRadius: 10, marginTop: 30, bottom: 30 }, // Lebih luas
     nextText: { color: "white", textAlign: "center", fontSize: 16, fontWeight: "600" },
   });
   

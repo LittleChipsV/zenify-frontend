@@ -6,19 +6,14 @@ export default function DashboardLayout() {
   return (
     <Tabs
       screenOptions={{
+        headerShown: false, // Sembunyikan header di semua tab
         tabBarStyle: { backgroundColor: "#ffffff", height: 60 },
         tabBarActiveTintColor: "#007AFF",
       }}
     >
     <Tabs.Screen
-    name="mood"
-    options={{
-    href: null, // Mencegah mood muncul sebagai tab
-        }}
-        />
-    <Tabs.Screen
     name="payment-success"
-    options={{
+    options={{  
     href: null, // Mencegah mood muncul sebagai tab
         }}
         />
