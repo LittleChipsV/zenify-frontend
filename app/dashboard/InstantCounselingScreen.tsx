@@ -14,7 +14,7 @@ const doctors = [
   },
   {
     id: 2,
-    name: "Dr. Dimas Hakim, M.Psi., Psikolog",
+    name: "Dr. Irfan Hakim, M.Psi., Psikolog",
     specialty: "Manajemen Emosi & Kontrol Diri",
     rating: 4.8,
     time: "10.00 - 22.00 WIB",
