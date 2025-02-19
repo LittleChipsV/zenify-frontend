@@ -1,9 +1,9 @@
 import { View, Text } from "react-native";
 
-export default function Counseling() {
+export default function Profile() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Counseling Page</Text>
+      <Text>Profile Page</Text>
     </View>
   );
 }
