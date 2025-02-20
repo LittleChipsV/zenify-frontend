@@ -1,6 +1,6 @@
 import { Tabs } from "expo-router";
 import { FontAwesome5, Ionicons, MaterialIcons } from "@expo/vector-icons";
-import React from "react";
+import React from 'react';
 
 export default function DashboardLayout() {
   return (

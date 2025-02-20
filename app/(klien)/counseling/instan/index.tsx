@@ -14,7 +14,7 @@ const doctors = [
   },
   {
     id: 2,
-    name: "Dr. Dimas Hakim, M.Psi., Psikolog",
+    name: "Dr. Irfan Hakim, M.Psi., Psikolog",
     specialty: "Manajemen Emosi & Kontrol Diri",
     rating: 4.8,
     time: "10.00 - 22.00 WIB",
@@ -81,9 +81,9 @@ const CounselingScreen = () => {
           <Ionicons name="arrow-back" size={24} color="black" />
         </TouchableOpacity>
         <Text style={styles.title}>Konseling</Text>
-        <TouchableOpacity onPress={() => router.push("/counseling/chat")}>
+        {/* <TouchableOpacity onPress={() => router.push("/counseling/chat")}>
         <Ionicons name="chatbubble-ellipses" size={24} color="black" />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
 
       {/* List Dokter */}
@@ -93,9 +93,9 @@ const CounselingScreen = () => {
         renderItem={({ item, index }) => (
           <TouchableOpacity
             style={[styles.card, index !== doctors.length - 1 && styles.cardBorder]}
-            onPress={() => router.push(`/doctor/${item.id}`)} // 🔥 Navigasi ke halaman detail
+            onPress={() => router.push(`/?${item.id}`)} // 🔥 Navigasi ke halaman detail
           >
-            <Image source={require("../../assets/images/Dokter.png")} style={styles.image} />
+            <Image source={require("../../../../assets/images/Dokter.png")} style={styles.image} />
             <View style={styles.info}>
               <Text style={styles.name}>{item.name}</Text>
               <Text style={styles.specialty}>{item.specialty}</Text>
