@@ -8,11 +8,11 @@ const ProgressBar = require("react-native-progress/Bar").default;
 
 
 const moods = [
-  { id: 1, image: require("../../assets/images/buruk.png") },
-  { id: 2, image: require("../../assets/images/sangatburuk.png") },
-  { id: 3, image: require("../../assets/images/flat.png") },
-  { id: 4, image: require("../../assets/images/senang.png") },
-  { id: 5, image: require("../../assets/images/sangatsenang.png") },
+  { id: 1, image: require("../../../assets/images/buruk.png") },
+  { id: 2, image: require("../../../assets/images/sangatburuk.png") },
+  { id: 3, image: require("../../../assets/images/flat.png") },
+  { id: 4, image: require("../../../assets/images/senang.png") },
+  { id: 5, image: require("../../../assets/images/sangatsenang.png") },
 ];
 
 const activities = [
@@ -21,24 +21,24 @@ const activities = [
 ];
 
 const recommendations = [
-  { id: 1, title: "Find Your Calm", subtitle: "Meditation • 7-10 mins", image: require("../../assets/images/meditation.png") },
-  { id: 2, title: "Find Your Peace", subtitle: "Relaxation • 5-8 mins", image: require("../../assets/images/meditation.png") },
+  { id: 1, title: "Find Your Calm", subtitle: "Meditation • 7-10 mins", image: require("../../../assets/images/meditation.png") },
+  { id: 2, title: "Find Your Peace", subtitle: "Relaxation • 5-8 mins", image: require("../../../assets/images/meditation.png") },
 ];
 
 const articles = [
-  { id: 1, title: "How Sleep Affects Mental Health", image: require("../../assets/images/sleep.png") },
-  { id: 2, title: "The Power of Mindfulness", image: require("../../assets/images/sleep.png") },
+  { id: 1, title: "How Sleep Affects Mental Health", image: require("../../../assets/images/sleep.png") },
+  { id: 2, title: "The Power of Mindfulness", image: require("../../../assets/images/sleep.png") },
 ];
 
 const HomeScreen = () => {
-  const router = useRouter();
+    const router = useRouter();
 
   return (
     <ScrollView style={{ flex: 1, backgroundColor: "#E5F2FF" }}>
 {/* HEADER */}
       <View style={styles.header}>
         <View style={styles.profileContainer}>
-          <Image source={require("../../assets/images/profile.jpg")} style={styles.profileImage} />
+          <Image source={require("../../../assets/images/profile.jpg")} style={styles.profileImage} />
           <View>
             <Text style={styles.welcomeText}>Pacar Aghnie</Text>
             <Text style={styles.greetingText}>Welcome back! 👋</Text>
@@ -110,7 +110,7 @@ const HomeScreen = () => {
             <Text style={styles.chatButtonText}>Chat Now</Text>
           </TouchableOpacity>
         </View>
-        <Image source={require("../../assets/images/counseling.png")} style={styles.counselingImage} />
+        <Image source={require("../../../assets/images/counseling.png")} style={styles.counselingImage} />
       </View>
 
       {/* RECOMMENDATIONS */}
@@ -137,7 +137,7 @@ const HomeScreen = () => {
 
       {/* VIDEO SECTION */}
       <View style={styles.videoSection}>
-        <Video source={require("../../assets/videos/sample.mp4")} style={styles.video} useNativeControls resizeMode={ResizeMode.COVER}
+        <Video source={require("../../../assets/videos/sample.mp4")} style={styles.video} useNativeControls resizeMode={ResizeMode.COVER}
  />
         <Text style={styles.videoCategory}>Anxiety Reduction</Text>
         <Text style={styles.videoTitle}>Try Our Mindful Breathing Technique!</Text>
@@ -149,7 +149,7 @@ const HomeScreen = () => {
   <View style={styles.rowBetween}>
     <Text style={styles.sectionTitle}>Our Articles</Text>
     <TouchableOpacity>
-      <Text style={styles.linkText}>See All</Text>
+      <Text style={styles.linkText} onPress={() => router.push("../home/all-articles")}>See All</Text>
     </TouchableOpacity>
   </View>
 

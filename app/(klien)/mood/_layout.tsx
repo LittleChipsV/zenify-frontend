@@ -6,6 +6,7 @@ export default function MoodLayout() {
       <Stack.Screen name="mood-step1" />
       <Stack.Screen name="mood-step2" />
       <Stack.Screen name="mood-step3" />
+      <Stack.Screen name="mood-result" />
     </Stack>
   );
 }

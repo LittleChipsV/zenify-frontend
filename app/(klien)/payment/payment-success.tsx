@@ -182,7 +182,7 @@ const PaymentSuccessScreen = () => {
         <View style={styles.ticketCutoutLeft} />
         <View style={styles.ticketCutoutRight} />
       </View>
-      <TouchableOpacity style={styles.button} onPress={() => router.push("./home")}> 
+      <TouchableOpacity style={styles.button} onPress={() => router.push("/(klien)")}> 
         <Text style={styles.buttonText}>Back to Home</Text>
       </TouchableOpacity>
     </View>

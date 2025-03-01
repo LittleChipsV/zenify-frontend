@@ -120,7 +120,7 @@ const SignInScreen = () => {
             marginTop: 20,
           }}
         >
-          <TouchableOpacity onPress={() => router.push("/(klien)")}>
+          <TouchableOpacity onPress={() => router.push("/(klien)/home")}>
             <Text style={{ color: "#fff", fontWeight: "bold", fontSize: 16 }}>Sign In</Text>
           </TouchableOpacity>
         </LinearGradient>

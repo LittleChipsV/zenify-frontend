@@ -25,7 +25,7 @@ const KonselingScreen = () => {
       <View style={styles.optionContainer}>
       <TouchableOpacity
           style={[styles.optionBox, styles.activeOption]}
-          onPress={() => router.push("./InstantCounselingScreen")}>
+          onPress={() => router.push("./counseling/instan/")}>
           <Text style={styles.optionTitleI}>⚡ Instan</Text>
           <Text style={styles.optionDescI}>Butuh bantuan segera? Temukan solusi instan untuk emosimu.</Text>
       </TouchableOpacity>

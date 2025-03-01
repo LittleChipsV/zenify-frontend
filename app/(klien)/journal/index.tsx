@@ -11,83 +11,81 @@ import {
 } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from "expo-router";
 
 const JournalScreen = () => {
+  const router = useRouter();
   const journalCards = [
     {
       id: 1,
       title: 'Refleksi Diri',
       description: 'Kenali emosi, hargai momen, dan dukung pertumbuhan pribadimu.',
-      color: '#FFE8E8',
-      borderColor: '#FFB5B5'
+      image: require('../../../assets/images/refleksi-diri.png'),
     },
     {
       id: 2,
       title: 'Pesan untuk Diri Sendiri',
       description: 'Apa satu hal yang membuatmu tersenyum hari ini? Tuliskan bagaimana perasaanmu tentangnya.',
-      color: '#E8FFF1',
-      borderColor: '#B5FFD6'
+      image: require('../../../assets/images/refleksi-diri.png'),
     },
     {
       id: 3,
       title: 'Pencapaian Kecil',
       description: 'Apa satu hal yang berhasil kamu lakukan hari ini dan membuatmu bangga?',
-      color: '#E8E9FF',
-      borderColor: '#B5B7FF'
+      image: require('../../../assets/images/refleksi-diri.png'),
     },
     {
       id: 4,
       title: 'Memaafkan Diri',
       description: 'Kesalahan apa yang perlu kamu lepaskan agar bisa lebih damai?',
-      color: '#E8FFF1',
-      borderColor: '#B5FFD6'
+      image: require('../../../assets/images/refleksi-diri.png'),
     },
   ];
 
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style="dark" />
-      
-      {/* Header */}
-      <View style={styles.header}>
-        <TouchableOpacity>
+          {/* Header */}
+          <View style={styles.header}>
+        <TouchableOpacity onPress={() => router.back()}>
           <Ionicons name="chevron-back" size={24} color="#000" />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Zenify Journal</Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => router.push("../journal/history")}>
           <Ionicons name="time-outline" size={24} color="#000" />
         </TouchableOpacity>
       </View>
 
       {/* Search Bar */}
       <View style={styles.searchContainer}>
-        <Ionicons name="search-outline" size={20} color="#666" />
+        <Ionicons name="search-outline" size={20} color="#999" style={styles.searchIcon} />
         <TextInput 
           style={styles.searchInput}
           placeholder="Cari Journal..."
-          placeholderTextColor="#666"
+          placeholderTextColor="#999"
         />
       </View>
 
       {/* Daily Journal Banner */}
       <View style={styles.bannerContainer}>
-        <View style={styles.bannerContent}>
-          <Text style={styles.bannerTitle}>My Daily Journal</Text>
-          <Image 
-            source={require('../../../assets/images/Journal_Banner.png')}
-            style={styles.bannerImage}
-          />
-        </View>
-      </View>
+  <View style={styles.bannerTextContainer}>
+    <Text style={styles.bannerTitleTop}>My Daily</Text>
+    <Text style={styles.bannerTitleBottom}>Journal</Text>
+  </View>
+  <Image 
+    source={require('../../../assets/images/Journal_Banner.png')}
+    style={styles.bannerImage}
+  />
+</View>
 
       {/* Journal Cards */}
       <ScrollView style={styles.cardsContainer}>
         {journalCards.map((card) => (
           <TouchableOpacity 
             key={card.id}
-            style={[styles.card, { backgroundColor: card.color }]}
+            style={styles.card}
           >
-            <View style={[styles.cardStrip, { backgroundColor: card.borderColor }]} />
+            <Image source={card.image} style={styles.cardImage} />
             <View style={styles.cardContent}>
               <Text style={styles.cardTitle}>{card.title}</Text>
               <Text style={styles.cardDescription}>{card.description}</Text>
@@ -95,7 +93,6 @@ const JournalScreen = () => {
           </TouchableOpacity>
         ))}
       </ScrollView>
-
     </SafeAreaView>
   );
 };
@@ -105,12 +102,16 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
+  searchIcon: {
+    marginRight: 8,
+  },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 16,
     paddingVertical: 12,
+    paddingTop: 30, // Tambahkan padding atas agar tidak terpotong
   },
   headerTitle: {
     fontSize: 18,
@@ -121,10 +122,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginHorizontal: 16,
     marginVertical: 8,
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-    backgroundColor: '#F5F5F5',
-    borderRadius: 8,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+    backgroundColor: '#FFF',
+    borderRadius: 9, // Membuat search bar lebih bulat
+    borderWidth: 2,
+    borderColor: '#E4E4E4',
+    //shadowColor: "#000",
+    //shadowOffset: { width: 0, height: 2 },
+    //shadowOpacity: 0.1,
+    //shadowRadius: 5,
+    //elevation: 3, // Efek floating untuk Android
+    marginBottom: 18,
   },
   searchInput: {
     flex: 1,
@@ -132,41 +141,69 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   bannerContainer: {
-    margin: 16,
+    marginHorizontal: 16,
     padding: 16,
-    backgroundColor: '#FFF3E0',
+    backgroundColor: '#FFE8D6',
     borderRadius: 12,
-  },
-  bannerContent: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
+    justifyContent: 'space-between',
+    overflow: 'hidden',
+    height: 120, // Menentukan tinggi agar gambar tidak hilang
+    position: 'relative', // Untuk mengatur posisi elemen di dalamnya
+    marginBottom: 19,
   },
-  bannerTitle: {
-    fontSize: 20,
-    fontWeight: '600',
+  bannerTextContainer: {
+    flex: 1,
+    marginLeft: 20,
+    paddingLeft: 20, // Geser teks ke kanan
+    fontFamily: 'poppins',
+  },
+  bannerTitleTop: {
+    fontSize: 24,
+    fontWeight: '700',
     color: '#6B4423',
+    fontFamily: 'poppins',
+
+  },
+  bannerTitleBottom: {
+    fontSize: 24,
+    fontWeight: '700',
+    color: '#6B4423',
+    fontFamily: 'poppins',
+
   },
   bannerImage: {
-    width: 100,
-    height: 100,
+    width: 180, // Perbesar ukuran gambar
+    height: 130,
+    position: 'absolute',
+    right: -4, // Geser lebih ke kanan agar terpotong oleh banner
+    bottom: -9, // Bisa disesuaikan agar tampak lebih natural
+    resizeMode: 'cover', // Memastikan gambar memenuhi area dengan pemotongan
   },
+  
   cardsContainer: {
     flex: 1,
     paddingHorizontal: 16,
   },
   card: {
     flexDirection: 'row',
+    alignItems: 'center',
     marginBottom: 12,
     borderRadius: 12,
-    overflow: 'hidden',
+    padding: 16,
+    borderWidth: 1,
+    borderColor: '#DDD', // Outline grey
+    backgroundColor: '#FFF',
   },
-  cardStrip: {
-    width: 6,
+  cardImage: {
+    width: 70,
+    height: 80,
+    marginRight: 12,
+    resizeMode: 'contain',
   },
   cardContent: {
     flex: 1,
-    padding: 16,
   },
   cardTitle: {
     fontSize: 16,
@@ -176,28 +213,6 @@ const styles = StyleSheet.create({
   cardDescription: {
     fontSize: 14,
     color: '#666',
-  },
-  bottomNav: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    paddingVertical: 12,
-    borderTopWidth: 1,
-    borderTopColor: '#EEE',
-  },
-  navItem: {
-    alignItems: 'center',
-  },
-  navText: {
-    fontSize: 12,
-    marginTop: 4,
-    color: '#666',
-  },
-  activeIcon: {
-    color: '#000',
-  },
-  activeNavText: {
-    color: '#000',
-    fontWeight: '500',
   },
 });
 

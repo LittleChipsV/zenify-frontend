@@ -112,8 +112,8 @@
             borderColor: "#5DB9F8", 
             backgroundColor: "transparent", 
             alignItems: "center",
-            marginTop: 125,
-
+            marginTop: 95,
+            bottom: 30
           },
         nextText: 
         { color: "#5DB9F8", textAlign: "center", fontSize: 16, fontWeight: "600",}

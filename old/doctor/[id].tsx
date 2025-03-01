@@ -66,7 +66,7 @@ const DoctorDetailScreen = () => {
           <View style={styles.header}>
             <TouchableOpacity
               style={styles.iconButton}
-              onPress={() => router.push("/dashboard/InstantCounselingScreen")}
+              //onPress={() => router.push("/dashboard/InstantCounselingScreen")}//
             >
               <Ionicons name="arrow-back-outline" size={24} color="black" />
             </TouchableOpacity>

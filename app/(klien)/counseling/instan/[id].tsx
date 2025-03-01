@@ -12,6 +12,8 @@ import {
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
 import { useState } from "react";
 import { useRouter } from "expo-router"; // Import useRouter
+import { ScrollView } from "react-native";
+
 
 const doctorData = {
   id: 1,
@@ -61,12 +63,12 @@ const DoctorDetailScreen = () => {
       style={styles.container}
       behavior={Platform.OS === "ios" ? "padding" : undefined}
     >
-      <View style={styles.container}>
-        <View style={styles.headerBackground}>
+  <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+  <View style={styles.headerBackground}>
           <View style={styles.header}>
             <TouchableOpacity
               style={styles.iconButton}
-              onPress={() => router.push("/")}
+              onPress={() => router.back()}
             >
               <Ionicons name="arrow-back-outline" size={24} color="black" />
             </TouchableOpacity>
@@ -197,7 +199,7 @@ const DoctorDetailScreen = () => {
             <Text style={styles.bookingText}>Booking Sekarang</Text>
           </TouchableOpacity>
         </View>
-      </View>
+        </ScrollView>
     </KeyboardAvoidingView>
   );
 };
@@ -223,6 +225,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    paddingBottom: 70, // Tambahkan padding atas agar tidak terpotong
   },
   iconButton: {
     padding: 8,
@@ -388,6 +391,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     alignItems: "center",
     justifyContent: "center",
+    
   },
   
   bookingText: {

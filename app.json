@@ -32,7 +32,9 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ]
+      ],
+      "expo-font",
+      "react-native-bottom-tabs"
     ],
     "experiments": {
       "typedRoutes": true

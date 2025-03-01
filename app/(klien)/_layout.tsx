@@ -1,5 +1,5 @@
 import { Tabs } from "expo-router";
-import { FontAwesome5, Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { FontAwesome5, Ionicons } from "@expo/vector-icons";
 import React from "react";
 
 export default function DashboardLayout() {
@@ -7,34 +7,35 @@ export default function DashboardLayout() {
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarStyle: { backgroundColor: "#ffffff", height: 60 },
-        tabBarActiveTintColor: "#007AFF",
+        tabBarStyle: { backgroundColor: "#ffffff", height: 78 },
+        tabBarActiveTintColor: "black",
+        tabBarInactiveTintColor: "gray",
       }}
     >
-       <Tabs.Screen
-        name="index"
+      <Tabs.Screen
+        name="home"
         options={{
           title: "Home",
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="home-outline" size={size} color={color} />
+            <Ionicons name="home" size={size} color={color} />
           ),
         }}
       />
-       <Tabs.Screen
+      <Tabs.Screen
         name="meditasi"
         options={{
           title: "Meditasi",
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="home-outline" size={size} color={color} />
+            <Ionicons name="footsteps" size={size} color={color} />
           ),
         }}
       />
       <Tabs.Screen
         name="counseling"
         options={{
-          title: "Counseling",
+          title: "Konseling",
           tabBarIcon: ({ color, size }) => (
-            <MaterialIcons name="support-agent" size={size} color={color} />
+            <Ionicons name="chatbubble-ellipses" size={size} color={color} />
           ),
         }}
       />
@@ -52,26 +53,26 @@ export default function DashboardLayout() {
         options={{
           title: "Profile",
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="person-outline" size={size} color={color} />
+            <Ionicons name="person-circle-outline" size={size} color={color} />
           ),
         }}
       />
       <Tabs.Screen
         name="mood"
         options={{
-          href: null
+          href: null,
         }}
       />
       <Tabs.Screen
         name="payment/payment"
         options={{
-          href: null
+          href: null,
         }}
       />
       <Tabs.Screen
         name="payment/payment-success"
         options={{
-          href: null
+          href: null,
         }}
       />
     </Tabs>

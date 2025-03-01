@@ -55,7 +55,7 @@ const MoodStep3 = () => {
         ))}
       </ScrollView>
 
-      <TouchableOpacity style={styles.nextButton} onPress={() => router.push("/mood")}>
+      <TouchableOpacity style={styles.nextButton} onPress={() => router.push("/mood/mood-result")}>
         <Text style={styles.nextText}>Next</Text>
       </TouchableOpacity>
     </View>
