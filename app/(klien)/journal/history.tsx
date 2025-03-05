@@ -14,7 +14,7 @@ export default function JournalPage() {
       {/* Header dengan background biru */}
       <View style={styles.headerContainer}>
         <View style={styles.header}>
-          <TouchableOpacity style={styles.backButton}>
+          <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
             <Ionicons name="chevron-back" size={24} color="black" />
           </TouchableOpacity>
           <Text style={styles.headerTitle}>Catatan Journalmu</Text>

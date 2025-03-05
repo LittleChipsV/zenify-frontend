@@ -113,27 +113,29 @@ const HomeScreen = () => {
         <Image source={require("../../../assets/images/counseling.png")} style={styles.counselingImage} />
       </View>
 
-      {/* RECOMMENDATIONS */}
-      <View style={styles.section}>
-        <View style={styles.rowBetween}>
-          <Text style={styles.sectionTitle}>Recommendation For You</Text>
-          <TouchableOpacity>
-            <Text style={styles.linkText}>See All</Text>
-          </TouchableOpacity>
+{/* RECOMMENDATIONS */}
+<View style={styles.section}>
+  <View style={styles.rowBetween}>
+    <Text style={styles.sectionTitle}>Recommendation For You</Text>
+    <TouchableOpacity onPress={() => router.push("../meditasi/meditation")} >
+      <Text style={styles.linkText}>See All</Text>
+    </TouchableOpacity>
+  </View>
+  <FlatList
+    horizontal
+    data={recommendations}
+    keyExtractor={(item) => item.id.toString()}
+    renderItem={({ item }) => (
+      <TouchableOpacity onPress={() => router.push(`/meditasi/meditation-details`)}>
+        <View style={styles.card}>
+          <Image source={item.image} style={styles.cardImage} />
+          <Text style={styles.cardTitle}>{item.title}</Text>
+          <Text style={styles.cardSubtitle}>{item.subtitle}</Text>
         </View>
-        <FlatList
-          horizontal
-          data={recommendations}
-          keyExtractor={(item) => item.id.toString()}
-          renderItem={({ item }) => (
-            <View style={styles.card}>
-              <Image source={item.image} style={styles.cardImage} />
-              <Text style={styles.cardTitle}>{item.title}</Text>
-              <Text style={styles.cardSubtitle}>{item.subtitle}</Text>
-            </View>
-          )}
-        />
-      </View>
+      </TouchableOpacity>
+    )}
+  />
+</View>
 
       {/* VIDEO SECTION */}
       <View style={styles.videoSection}>
@@ -158,7 +160,7 @@ const HomeScreen = () => {
     data={articles}
     keyExtractor={(item) => item.id.toString()}
     renderItem={({ item }) => (
-      <TouchableOpacity style={styles.articleCard}>
+      <TouchableOpacity style={styles.articleCard} onPress={() => router.push("../home/articles")}>
         <Image source={item.image} style={styles.articleImage} />
         <View style={styles.articleContent}>
           <Text style={styles.articleTitle} numberOfLines={2}>{item.title}</Text>

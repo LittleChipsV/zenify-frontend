@@ -57,6 +57,7 @@ export default function DashboardLayout() {
           ),
         }}
       />
+      
       <Tabs.Screen
         name="mood"
         options={{
@@ -70,11 +71,89 @@ export default function DashboardLayout() {
         }}
       />
       <Tabs.Screen
+        name="components/SettingsHeader"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
         name="payment/payment-success"
         options={{
           href: null,
         }}
       />
-    </Tabs>
+          <Tabs.Screen
+          name="profile/manage-account"
+          options={{
+            href: null,
+          }}
+        />
+        <Tabs.Screen
+          name="profile/security"
+          options={{
+            href: null,
+          }}
+        />
+        <Tabs.Screen
+          name="profile/notifications"
+          options={{
+            href: null,
+          }}
+        />
+        <Tabs.Screen
+          name="profile/about-ai"
+          options={{
+            href: null,
+          }}
+        />
+        <Tabs.Screen
+          name="profile/help-center"
+          options={{
+            href: null,
+          }}
+        />
+        <Tabs.Screen
+          name="profile/theme"
+          options={{
+            href: null,
+          }}
+        />
+        <Tabs.Screen
+          name="profile/language"
+          options={{
+            href: null,
+          }}
+        />
+        <Tabs.Screen
+          name="profile/history"
+          options={{
+            href: null,
+          }}
+        />
+        <Tabs.Screen
+          name="profile/terms-conditions"
+          options={{
+            href: null,
+          }}      
+          />
+          <Tabs.Screen
+          name="profile/privacy-policy"
+          options={{
+            href: null,
+          }}
+        />
+        <Tabs.Screen
+          name="profile/notification"
+          options={{
+            href: null,
+          }}
+        />
+        <Tabs.Screen
+          name="profile/contact-us"
+          options={{
+            href: null,
+          }}
+        />
+      </Tabs>
   );
 }

@@ -25,7 +25,7 @@
           
         {/* Header dengan Progress Bar */}
         <View style={styles.header}>
-            <TouchableOpacity onPress={() => router.push("/mood")}> 
+            <TouchableOpacity onPress={() => router.push("/home")}> 
             <Ionicons name="close" size={24} color="black" />
             </TouchableOpacity>
             <View style={styles.progressBarContainer}>
